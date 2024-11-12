@@ -14,7 +14,7 @@ export interface IItemsData {
   quantity: number;
 }
 
-const mapToIItemsData = (item): IItemsData | null => {
+const mapToIItemsData = (item: IItemsData): IItemsData | null => {
   if (
     typeof item.listing_id === "number" &&
     typeof item.url === "string" &&
@@ -40,7 +40,7 @@ const mapToIItemsData = (item): IItemsData | null => {
 
 export const getData = (): IItemsData[] => {
   const jsonString = JSON.stringify(itemsData);
-  const parsedArray = JSON.parse(jsonString);
+  const parsedArray = JSON.parse(jsonString) as IItemsData[];
 
   const parsedData: IItemsData[] = parsedArray
     .map(mapToIItemsData)
